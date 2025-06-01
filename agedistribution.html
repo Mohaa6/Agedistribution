@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Age Distribution of Respondents</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+    }
+    canvas {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Age Distribution of Respondents</h2>
+  <canvas id="ageChart" height="400"></canvas>
+
+  <script>
+    const ctx = document.getElementById('ageChart').getContext('2d');
+    const ageChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['16–20', '21–25', '26–30', '31–35', '36–40', '41–45', '46–50', '51–55'],
+        datasets: [{
+          label: 'Number of Respondents',
+          data: [72, 75, 41, 16, 16, 1, 2, 1],
+          backgroundColor: '#2196f3'
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          },
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: '#000',
+            font: {
+              weight: 'bold'
+            }
+          },
+          title: {
+            display: true,
+            text: 'Respondent Age Group Distribution'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Total Respondents'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Age Group'
+            }
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  </script>
+
+</body>
+</html>
